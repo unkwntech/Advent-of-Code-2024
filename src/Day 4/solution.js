@@ -57,3 +57,22 @@ for (let rotations = 4; rotations > 0; rotations--) {
 }
 
 console.log(`Part 1: ${count}`);
+
+count = 0;
+for (let rotations = 4; rotations > 0; rotations--) {
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+            if (i + 2 > matrix.length - 1) continue;
+            if (j + 2 > matrix[i].length - 1) continue;
+            if (matrix[i][j] !== "M") continue;
+            if (matrix[i][j + 2] !== "S") continue;
+            if (matrix[i + 1][j + 1] !== "A") continue;
+            if (matrix[i + 2][j] !== "M") continue;
+            if (matrix[i + 2][j + 2] !== "S") continue;
+
+            count++;
+        }
+    }
+    matrix = rotateMatrix(matrix);
+}
+console.log(`Part 2: ${count}`);
